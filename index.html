@@ -194,6 +194,28 @@ footer a{color:var(--soft)}
 }
 @media (prefers-reduced-motion:no-preference){.view{animation:in .3s ease both}@keyframes in{from{opacity:.5;transform:translateY(6px)}to{opacity:1;transform:none}}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* --- Carte cadeau --- */
+.promo{display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:linear-gradient(135deg,#2A1F3A,#1C1722 60%);border:1px solid var(--line-2);color:var(--fg);text-decoration:none}
+.promo .ico{flex:none;width:52px;height:52px;border-radius:12px;background:var(--mauve);display:flex;align-items:center;justify-content:center;font-size:26px}
+.promo b{font-family:var(--display);font-weight:400;font-size:1.45rem;letter-spacing:.03em;display:block;line-height:1}
+.promo small{color:var(--soft);font-size:.88rem;line-height:1.35;display:block;margin-top:4px}
+.promo .go{margin-left:auto;color:var(--vert);font-size:1.5rem}
+.gcard{position:relative;aspect-ratio:1.6;max-width:440px;width:100%;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 78% 20%,rgba(123,70,201,.45),transparent 55%),radial-gradient(circle at 15% 90%,rgba(126,224,106,.18),transparent 50%),#141117;border:1.5px solid var(--line-2);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.gcard .corner{font-size:24px}
+.gcard .g-logo{position:absolute;right:16px;top:14px;width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--mauve)}
+.gcard .g-in{position:absolute;inset:0;padding:18px 22px 18px 52px;display:grid;align-content:center;gap:4px}
+.gcard .g-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mauve-txt);font-weight:600}
+.gcard .g-amt{font-family:var(--display);font-size:clamp(3rem,15vw,4.4rem);line-height:.9;color:var(--vert)}
+.gcard .g-pour{font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;line-height:1}
+.gcard .g-msg{font-size:.82rem;color:var(--soft);font-style:italic;max-width:88%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.gcard .g-foot{position:absolute;left:52px;right:44px;bottom:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.66rem;letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.amts{display:flex;flex-wrap:wrap;gap:8px}
+.amt{min-height:48px;min-width:72px;padding:8px 14px;border-radius:24px;border:1.5px solid var(--line-2);background:transparent;color:var(--fg);font:600 1rem var(--body);cursor:pointer}
+.amt[aria-pressed="true"]{background:var(--vert);border-color:var(--vert);color:#121114}
+.gsteps{display:grid;gap:8px;counter-reset:g;padding:0;margin:0;list-style:none}
+.gsteps li{display:flex;gap:12px;align-items:flex-start;color:var(--soft)}
+.gsteps li::before{counter-increment:g;content:counter(g);flex:none;width:28px;height:28px;border-radius:50%;background:var(--card);border:1px solid var(--line-2);color:var(--vert);font-family:var(--display);font-size:1.1rem;display:flex;align-items:center;justify-content:center}
 </style>
 </head>
 <body>
@@ -220,6 +242,8 @@ footer a{color:var(--soft)}
     </div>
   </div>
 
+  <a class="promo" href="#cadeau"><span class="ico" aria-hidden="true">🎁</span><span><b>Offrez un tatouage</b><small>La carte cadeau L'Ours, l'idée parfaite pour Noël</small></span><span class="go" aria-hidden="true">›</span></a>
+
   <div class="intro">
     <span class="eyebrow">Tatoueur à Mouscron</span>
     <h2>Bienvenue chez L'Ours Tattoo</h2>
@@ -233,6 +257,7 @@ footer a{color:var(--soft)}
     <a href="#deroule"><span><span class="suit s-v" aria-hidden="true">♦</span>Comment ça se passe ?</span><span class="go" aria-hidden="true">›</span></a>
     <a href="#soins"><span><span class="suit s-m" aria-hidden="true">♠</span>Soins &amp; suivi</span><span class="go" aria-hidden="true">›</span></a>
     <a href="#salon"><span><span class="suit s-v" aria-hidden="true">♣</span>Le salon, mon univers</span><span class="go" aria-hidden="true">›</span></a>
+    <a href="#cadeau"><span><span class="suit s-m" aria-hidden="true">♥</span>La carte cadeau L'Ours</span><span class="go" aria-hidden="true">›</span></a>
   </nav>
 
   <div class="info-mini">
@@ -440,6 +465,40 @@ footer a{color:var(--soft)}
   </div>
 </section>
 
+<!-- CARTE CADEAU -->
+<section class="view wrap" id="v-cadeau" hidden>
+  <div class="page-head"><a class="back" href="#accueil">← Accueil</a><span class="eyebrow">Carte cadeau</span><h2>La carte cadeau L'Ours</h2></div>
+  <p class="lead">Un anniversaire, Noël, une envie de faire plaisir ? Offrez un tatouage. La personne choisit son projet, L'Ours fait le reste.</p>
+  <div class="gcard" id="g-card" aria-label="Aperçu de la carte cadeau">
+    <span class="corner tl" aria-hidden="true">L<span style="font-size:18px">♠</span></span>
+    <span class="corner br" aria-hidden="true">L<span style="font-size:18px">♣</span></span>
+    <img class="g-logo" id="g-logo" alt="">
+    <div class="g-in">
+      <span class="g-tag">Carte cadeau</span>
+      <span class="g-amt" id="g-amt">60 €</span>
+      <span class="g-pour" id="g-pour">Pour toi</span>
+      <span class="g-msg" id="g-msg">Un mot, un geste, L'Ours fait le reste !</span>
+    </div>
+    <span class="g-foot">Mouscron · Valable 1 an</span>
+  </div>
+  <form class="resa" id="gift">
+    <fieldset style="border:0;padding:0;margin:0;display:grid;gap:10px"><legend style="padding:0;margin-bottom:10px;font-weight:600">Le montant</legend>
+      <div class="amts" id="amts"><button type="button" class="amt" data-v="30" aria-pressed="false">30 €</button><button type="button" class="amt" data-v="60" aria-pressed="true">60 €</button><button type="button" class="amt" data-v="90" aria-pressed="false">90 €</button><button type="button" class="amt" data-v="120" aria-pressed="false">120 €</button><button type="button" class="amt" data-v="180" aria-pressed="false">180 €</button><button type="button" class="amt" data-v="autre" aria-pressed="false">Autre</button></div>
+      <label for="g-autre" id="g-autre-l" hidden>Autre montant (€)<input id="g-autre" inputmode="numeric" placeholder="Par exemple 150"></label>
+    </fieldset>
+    <label for="g-dest">Pour qui ?<input id="g-dest" required maxlength="40" placeholder="Prénom de la personne"></label>
+    <label for="g-mot">Petit message <small>Facultatif, il sera écrit sur la carte.</small><textarea id="g-mot" maxlength="120" placeholder="Joyeux Noël ! À toi de choisir ton prochain tatouage…"></textarea></label>
+    <label for="g-nom">Votre prénom et nom<input id="g-nom" required autocomplete="name" placeholder="Vous offrez la carte"></label>
+    <label for="g-tel">Votre numéro WhatsApp<input id="g-tel" required inputmode="tel" autocomplete="tel" placeholder="+32 4.. ou +33 6.."></label>
+    <label for="g-mail">Votre adresse mail<input id="g-mail" type="email" required autocomplete="email" placeholder="vous@exemple.com"></label>
+    <ol class="gsteps"><li>Vous envoyez votre demande.</li><li>L'Ours vous contacte sur WhatsApp pour le paiement, au salon ou par virement.</li><li>Il vous remet la carte cadeau, prête à offrir.</li></ol>
+    <p class="muted" style="font-size:.85rem">En envoyant ce formulaire, vous acceptez que vos données servent à traiter votre demande (voir la <a href="#mentions">politique de confidentialité</a>).</p>
+    <button class="btn" type="submit" id="g-send">Commander ma carte cadeau</button>
+  </form>
+  <div id="gift-ok" class="stack" hidden></div>
+  <a class="promo" href="liste.html"><span class="ico" aria-hidden="true">🐻</span><span><b>La liste de l'Ours</b><small>C'est vous qui rêvez d'un tatouage ? Créez votre liste et envoyez-la à vos proches.</small></span><span class="go" aria-hidden="true">›</span></a>
+</section>
+
 <!-- CONTACT -->
 <section class="view wrap" id="v-contact" hidden>
   <div class="page-head"><a class="back" href="#accueil">← Accueil</a><span class="eyebrow">Contact &amp; rendez-vous</span><h2>Venir chez L'Ours</h2></div>
@@ -534,7 +593,7 @@ const waLink=t=>`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t)}`;
 if(FACEBOOK_URL)document.getElementById("fb-link").href=FACEBOOK_URL;else document.getElementById("fb-link").removeAttribute("target");
 
 /* --- Navigation --- */
-const VIEWS=["accueil","qui","tatouages","reprise","deroule","soins","salon","agenda","projet","contact","mentions"];
+const VIEWS=["accueil","qui","tatouages","reprise","deroule","soins","salon","agenda","projet","cadeau","contact","mentions"];
 function show(){
   const h=(location.hash||"#accueil").slice(1);
   const v=VIEWS.includes(h)?h:"accueil";
@@ -604,6 +663,41 @@ fetch(API+"/memory/"+CLIENT+"_galerie").then(r=>r.json()).then(d=>{
     gal.prepend(fig);
   });
 }).catch(()=>{});
+
+/* --- Carte cadeau --- */
+(function(){
+  const card=document.getElementById("g-card");if(!card)return;
+  const logo=document.querySelector("header img");if(logo)document.getElementById("g-logo").src=logo.src;
+  let montant="60";
+  const autreL=document.getElementById("g-autre-l"),autre=document.getElementById("g-autre");
+  const val=()=>montant==="autre"?(autre.value.replace(/[^0-9]/g,"")):montant;
+  function maj(){
+    const v=val();document.getElementById("g-amt").textContent=(v||"…")+" €";
+    const d=document.getElementById("g-dest").value.trim();document.getElementById("g-pour").textContent=d?"Pour "+d:"Pour toi";
+    const m=document.getElementById("g-mot").value.trim();document.getElementById("g-msg").textContent=m||"Un mot, un geste, L'Ours fait le reste !";
+  }
+  document.getElementById("amts").addEventListener("click",e=>{
+    const b=e.target.closest(".amt");if(!b)return;
+    montant=b.dataset.v;document.querySelectorAll(".amt").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+    autreL.hidden=montant!=="autre";if(montant==="autre")autre.focus();maj();
+  });
+  ["g-autre","g-dest","g-mot"].forEach(id=>document.getElementById(id).addEventListener("input",maj));
+  document.getElementById("gift").addEventListener("submit",e=>{
+    e.preventDefault();
+    const g=id=>document.getElementById(id).value.trim(),v=val();
+    const errs=(m)=>{let p=document.getElementById("gift-err");if(!p){p=document.createElement("p");p.id="gift-err";p.className="err";e.target.appendChild(p)}p.textContent=m};
+    if(!v||+v<10){errs("Choisissez un montant (10 € minimum).");return}
+    if(g("g-tel").replace(/[^0-9]/g,"").length<8){errs("Vérifiez votre numéro WhatsApp.");return}
+    const data={client:CLIENT,source:"carte-cadeau",nom:g("g-nom"),whatsapp:g("g-tel"),email:g("g-mail"),prestation:"Carte cadeau "+v+" €",zone:"-",taille:"Carte cadeau",disponibilites:"Paiement au salon ou par virement",idee:"Carte cadeau de "+v+" € pour "+g("g-dest")+(g("g-mot")?". Message sur la carte : "+g("g-mot"):""),histoire:""};
+    const btn=document.getElementById("g-send");btn.disabled=true;btn.textContent="Envoi…";
+    const fini=()=>{e.target.hidden=true;const ok=document.getElementById("gift-ok");ok.hidden=false;ok.innerHTML=`<p><b>Merci ${esc(data.nom)} !</b> Votre demande de carte cadeau de ${esc(v)} € pour ${esc(g("g-dest"))} est bien partie. L'Ours vous contacte très vite sur WhatsApp pour le paiement et la remise de la carte.</p><div class="row"><a class="btn ghost" href="#accueil">Retour à l'accueil</a></div>`;ok.scrollIntoView({behavior:"smooth",block:"center"})};
+    if(!RESA_URL){fini();return}
+    fetch(RESA_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)})
+      .then(r=>{if(!r.ok)throw 0;fini()})
+      .catch(()=>{btn.disabled=false;btn.textContent="Réessayer";errs("L'envoi n'a pas marché. Vérifiez votre connexion et réessayez.")});
+  });
+  maj();
+})();
 
 /* --- Formulaire --- */
 function resaError(m){let p=document.getElementById("resa-err");if(!p){p=document.createElement("p");p.id="resa-err";p.className="err";document.getElementById("resa").appendChild(p)}p.textContent=m}
